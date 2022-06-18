@@ -77,7 +77,63 @@ clearLastValue.addEventListener('click', function(){
     // console.log(displayTwoNumber);
 })
 
+window.addEventListener('keydown', (e)=>{
+    // console.log(e.key);
+    if(
+        e.key === '0'||
+        e.key === '1'||
+        e.key === '2'||
+        e.key === '3'||
+        e.key === '4'||
+        e.key === '5'||
+        e.key === '6'||
+        e.key === '7'||
+        e.key === '8'||
+        e.key === '9'
+    ){
+        clickNumbers(e.key);
+    }else if(
+        e.key === '+'||
+        e.key === '-'||
+        e.key === '×'||
+        e.key === '÷'||
+        e.key === '%'
+    ){
+        clickOperators(e.key)
+    } else if(
+        e.key === '='||
+        e.key === 'Enter'
+    ){
+        equalEl.click();
+    } else if(
+        e.key === 'Backspace'
+    ){
+        clearLastValue.click();
+    }
+    console.log(e.key);
+})
+
+
 // function of logic
+
+function clickOperators(key){
+    operationEl.forEach(operator=>{
+        if(operator.innerText === key){
+            operator.click();
+        }
+    })
+}
+
+
+function clickNumbers(key){
+    // console.log(key);
+    numbersEl.forEach(number => {
+        if(number.textContent === key){
+            number.click();
+        }
+    })
+}
+
 
 function clearVar(opName = ''){
     displayOneNumber += displayTwoNumber + ' ' + opName + ' ';
